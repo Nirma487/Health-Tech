@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #e66465, #9198e5);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.dropdown {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+select {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #333;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+select:focus {
+    border-color: #e66465;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}</style>
+</head>
+<div class="container">
+        <h1>Select Area and Hospital</h1>
+        <div class="dropdown">
+            <label for="areaSelect">Choose an Area:</label>
+            <select id="areaSelect" onchange="populateHospitals()">
+                <option value="">Select an area</option>
+                <option value="area1">Hinjewadi</option>
+                <option value="area2">Nigdi</option>
+                <option value="area3">Pimple Saudagar</option>
+            </select>
+        </div>
+        
+        <div class="dropdown">
+            <label for="hospitalSelect">Choose a Hospital:</label>
+            <select id="hospitalSelect" disabled onchange="showSelectedHospital()">
+                <option value="">Select a hospital</option>
+            </select>
+        </div>
+    </div>
+<script>const hospitalData = {
+    area1: ['CityCare', 'Health Horizon', 'City Life'],
+    area2: ['Health Heaven', 'MedPlus', 'HealthCare'],
+    area3: ['MedCenter', 'CurePlus', 'HealthPub']
+};
+
+function populateHospitals() {
+    const areaSelect = document.getElementById('areaSelect');
+    const hospitalSelect = document.getElementById('hospitalSelect');
+    const selectedArea = areaSelect.value;
+
+    
+    hospitalSelect.innerHTML = '<option value="">Select a hospital</option>';
+
+    
+    if (selectedArea) {
+        hospitalSelect.disabled = false;
+        const hospitals = hospitalData[selectedArea];
+
+        
+        hospitals.forEach(hospital => {
+            const option = document.createElement('option');
+            option.value = hospital;
+            option.text = hospital;
+            hospitalSelect.appendChild(option);
+        });
+    } else {
+        hospitalSelect.disabled = true;
+    }
+}
+
+
+function showSelectedHospital() {
+    const hospitalSelect = document.getElementById('hospitalSelect');
+    const selectedHospital = hospitalSelect.value;
+
+    if (selectedHospital) {
+       
+        window.location.href = `physician.html?hospital=${encodeURIComponent(selectedHospital)}`;
+    }
+}</script>
+</body>
+</html>

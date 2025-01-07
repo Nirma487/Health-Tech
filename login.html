@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+            animation: slideArrow 2s infinite alternate;
+        }
+        @keyframes slideArrow {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-10px); }
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .back-arrow{
+			 background-color:white;
+            color:#6e8efb;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+		}
+        .submit-btn {
+            background-color:#6e8efb;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .submit-btn:hover {
+            background-color: #4e66e6;
+        }
+        .payment-section {
+            display: none;
+        }
+        .thankyou-box {
+			
+    
+    font-weight: bold;
+color: #6e8efb;
+            text-align: center;
+            font-size: 24px;
+            margin-top: 50px;
+        }
+        .thankyouMessage{
+			color: #6e8efb;
+		}	
+	
+</style>
+
+</head>
+<body>
+<button class="back-arrow" onclick="window.location.href='physician.html'">Go Back</button>
+<div class="container">
+    
+    <h2>Patient Information</h2>
+    <form id="patientForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="contact">Contact No:</label>
+        <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required>
+
+        <label for="time">Choose your Appointment time slot:</label>
+        <input type="time" id="time" name="time" required>
+
+        <button type="button" class="submit-btn" onclick="submitForm()">Submit</button>
+    </form>
+
+    <div class="payment-section" id="paymentSection">
+        <h2>Payment</h2>
+        <p>To proceed, please pay half of the total amount:Rs 500</p>
+        <label for="amount">Enter Paid Amount:</label>
+        <input type="number" id="amount" placeholder="Rs." required>
+        <button type="button" class="submit-btn" onclick="checkPayment()">Pay</button>
+        
+    </div>
+    
+    <div id="thankyouMessage" class="thankyou-box">
+	
+	 
+	</div>
+</div>
+<script>
+ function goBack() {
+        alert('Going back to the previous page!');
+       
+    }
+
+    function submitForm() {
+        const form = document.getElementById('patientForm');
+        const name = document.getElementById('name').value;
+        if (form.checkValidity()) {
+            form.style.display = 'none';
+            document.getElementById('paymentSection').style.display = 'block';
+            localStorage.setItem('patientName', name);  
+        } else {
+            alert('Please fill out the form correctly.');
+        }
+    }
+
+    function checkPayment() {
+        const amountPaid = parseFloat(document.getElementById('amount').value);
+        if (amountPaid >= 250) {
+            showThankYouMessage();
+        } else {
+            alert('Please pay at least half of the total amount (Rs.500) to proceed.');
+        }
+    }
+
+    function showThankYouMessage() {
+        const name = localStorage.getItem('patientName');
+        document.getElementById('paymentSection').style.display = 'none';
+        const message = `Thank you, ${name}, for your payment!
+        Please! note that your appointment will be valid for a durationof 24 hours.`;
+        
+        document.getElementById('thankyouMessage').innerText = message;
+        document.getElementById('thankyouMessage').style.display = 'block','blue';
+         
+        
+
+    }
+</script>       
+
+</body>	
+</html>

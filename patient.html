@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+	*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding-top: 80px;
+        }
+        
+header {
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.logo h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #6e8efb;
+}
+
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background-color: #fff;
+            border-radius: 8px;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        th, td {
+            padding: 16px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #6C7A89;
+            color: white;
+            text-transform: uppercase;
+        }
+
+       
+
+       
+       
+
+        
+
+       td button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #ff9800;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        td button:hover {
+            background-color: #e68900;
+        }
+         #message {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: red;
+        }
+         @keyframes fadeInTable {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }</style>
+</head>
+<body>
+	 <header>
+        <div class="logo">
+            <img src="health.jpg" alt="Hospital Logo">
+            <h2></h2>
+        </div>
+        <nav>
+            <ul>
+				 <nav>
+        <ul>
+            <li id="hospitalName"></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Welcome to <span id="hospitalDisplay"></span>!</h1>
+        <p>Here is the information about the selected hospital.</p>
+    </div>
+                <li><a href="house.html">Home</a></li>
+                <li><a href="physician.html">Expert Physicians</a></li>
+               
+                <li><a href="patient.html">Medicine Inventory</a></li>
+                <li><a href="article.html">Article</a></li>
+                <li><a href="about us.html">About Us</a></li>
+                <li><a href=""></a></li>
+            </ul>
+        </nav>
+    </header>
+ 
+
+<table id="medicineTable">
+    <thead>
+        <tr>
+            <th>Medicine Name</th>
+            <th>Quantity Available</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Paracetamol</td>
+            <td id="paracetamolQty">100</td>
+            <td>50</td>
+            <td><button onclick="purchaseMedicine('Paracetamol', 50, 'paracetamolQty')">Buy</button></td>
+        </tr>
+        <tr>
+            <td>Ibuprofen</td>
+            <td id="ibuprofenQty">80</td>
+            <td>100</td>
+            <td><button onclick="purchaseMedicine('Ibuprofen', 100, 'ibuprofenQty')">Buy</button></td>
+        </tr>
+        <tr>
+            <td>Antibiotic</td>
+            <td id="antibioticQty">60</td>
+            <td>200</td>
+            <td><button onclick="purchaseMedicine('Antibiotic', 200, 'antibioticQty')">Buy</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="message"></div>
+  <script>
+	function purchaseMedicine(medicineName, price, qtyId) {
+        let quantityElement = document.getElementById(qtyId);
+        let currentQuantity = parseInt(quantityElement.textContent);
+        let userConfirmed = confirm(`You need to pay Rs ${price} for ${medicineName}. Do you want to proceed?`);
+
+        if (userConfirmed) {
+            
+            let paymentSuccess = prompt("Please enter the payment amount:");
+
+            if (parseInt(paymentSuccess) >= price) {
+                if (currentQuantity > 0) {
+                    quantityElement.textContent = currentQuantity - 1;
+                    document.getElementById('message').textContent = `${medicineName} purchased successfully. Inventory updated!`;
+                    document.getElementById('message').style.color = 'green';
+                } else {
+                    document.getElementById('message').textContent = `Sorry, ${medicineName} is out of stock.`;
+                }
+            } else {
+                document.getElementById('message').textContent = `Payment failed! Insufficient amount paid for ${medicineName}.`;
+            }
+        } else {
+            document.getElementById('message').textContent = `Purchase cancelled.`;
+        }
+    }
+    function getHospitalFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('hospital');
+        }
+
+       
+        const hospitalName = getHospitalFromUrl();
+        document.getElementById('hospitalName').textContent = hospitalName;
+        document.getElementById('hospitalDisplay').textContent = hospitalName;
+  </script>
+</body>
+</html>

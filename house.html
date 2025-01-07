@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, pink, plum);;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            font-family: sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .start-button {
+            padding: 15px 30px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: coral;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .start-button:hover {
+            background-color: orangered;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+</style>
+<body>
+ <div class="container">
+        <h1>Welcome to Our Healthcare Solutions</h1>
+        <p>Our innovative solutions simplify patient admission processes, optimize bed availability, and reduce waiting times in OPDs. By integrating our system into a city-wide network, we strive to ensure that everyone receives timely, efficient, and accessible healthcare services, whether it's scheduling an appointment or handling medical emergencies.</p>
+        <button class="start-button" onclick="window.location.href='area.html'">Get Started</button>
+    </div>
+</body>
+</html>

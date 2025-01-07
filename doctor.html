@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+	* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: all 0.6s ease;
+}
+
+.form-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease forwards;
+    text-align: center;
+}
+
+.input-group {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.input-group label {
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6e8efb;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #4e66e6;
+}
+
+.thankyou-box {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 50px;
+    border-radius: 10px;
+    animation: fadeInUp 1s ease forwards;
+    text-align: center;
+}
+
+#thankyouMessage h1 span {
+    color: #6e8efb;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+
+</head>
+<body>
+ <div class="container">
+        <div class="form-box">
+            <h1>Patient Registration</h1>
+            <form id="patientForm">
+                <div class="input-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+                <div class="input-group">
+                    <label for="contact">Contact No:</label>
+                    <input type="tel" id="contact" name="contact" required>
+                </div>
+                <div class="input-group">
+                    <label for="time">Choose your appointment time slot:</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="thankyouMessage" class="thankyou-box">
+        <h1>Thank you, <span id="patientName"></span>!</h1>
+        <p>We appreciate your submission.</p>
+        <p>Please! note that your appointment will be valid for a duration
+			of 48 hours.
+		</p>
+    </div>
+
+  <script>document.getElementById('patientForm').addEventListener('submit', function (e) 
+	  {
+    e.preventDefault(); 
+
+    
+    const patientName = document.getElementById('name').value;
+    const age = document.getElementById('age').value;
+    const contact = document.getElementById('contact').value;
+    const time = document.getElementById('time').value;
+
+    
+    setTimeout(() => {
+        
+        document.querySelector('.container').style.display = 'none';
+        document.getElementById('thankyouMessage').style.display = 'flex';
+
+        
+        document.getElementById('patientName').textContent = patientName;
+
+        
+    }, 500); 
+});</script>
+</body>
+</html>

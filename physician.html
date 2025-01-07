@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: #333;
+    padding-top: 80px; 
+}
+
+header {
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.logo h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #6e8efb;
+}
+
+
+main {
+    padding: 20px 50px;
+    text-align: center;
+}
+
+main h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #fff;
+    animation: fadeInDown 1s ease;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    animation: fadeIn 1.5s ease;
+}
+
+table th, table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+}
+
+table th {
+    background-color: #6e8efb;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.doctor-img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.doctor-row {
+    transition: background 0.3s ease;
+}
+
+.doctor-row:hover {
+    background: #f0f0f0;
+}
+
+.appointment-btn{
+    background-color: #6e8efb;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.appointment-btn:hover {
+    background-color: #4e66e6;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}	
+</style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="health.jpg" alt="Hospital Logo">
+            <h2></h2>
+        </div>
+        <nav>
+            <ul>
+				 <nav>
+        <ul>
+            <li id="hospitalName"></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Welcome to <span id="hospitalDisplay"></span>!</h1>
+        <p>Here is the information about the selected hospital.</p>
+    </div>
+                <li><a href="house.html">Home</a></li>
+                <li><a href="physician.html">Expert Physicians</a></li>
+               
+                <li><a href="patient.html">Medicine Inventory</a></li>
+                <li><a href="article.html">Article</a></li>
+                <li><a href="about us.html">About Us</a></li>
+                <li><a href=""></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Expert Physicians</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name & Photo</th>
+                    <th>Specialisation</th>
+                    <th>Appointment</th>
+                </tr>
+            </thead>
+            <body>
+                
+                <tr class="doctor-row">
+                    <td><img src="doctor 2.jpeg" alt="Doctor 1" class="doctor-img"> Dr. John Smith</td>
+                    <td>Cardiologist</td>
+                    <td><button class="appointment-btn" onclick="window.location.href='login.html'">Book Appointment</button></td>
+                </tr>
+                <tr class="doctor-row">
+                    <td><img src="doctor 10.jpeg" alt="Doctor 2"  class="doctor-img"> Dr. Alice Brown</td>
+                    <td>Neurologist</td>
+                    <td><button class="appointment-btn" onclick="window.location.href='login.html'">Book Appointment</button></td>
+                </tr>
+                <tr class="doctor-row">
+                    <td><img src="doctor 8.jpeg" alt="Doctor 3" class="doctor-img"> Dr. Rahul Gupta</td>
+                    <td>Orthopedic Surgeon</td>
+                    <td><button class="appointment-btn" onclick="window.location.href='login.html'">Book Appointment</button></td>
+                </tr>
+                <tr class="doctor-row">
+                    <td><img src="doctor.webp" alt="Doctor 4" class="doctor-img"> Dr. Priya Kapoor</td>
+                    <td>Dermatologist</td>
+                    <td><button class="appointment-btn" onclick="window.location.href='login.html'">Book Appointment</button></td>
+                </tr>
+                <tr class="doctor-row">
+                    <td><img src="doctor 7.jpeg" alt="Doctor 5" class="doctor-img"> Dr. Sunil Deshmukh</td>
+                    <td>Pediatrician</td>
+                    <td><button class="appointment-btn" onclick="window.location.href='login.html'">Book Appointment</button></td>
+                </tr>
+                <tr class="doctor-row">
+                    <td><img src="doctor 9.jpeg" alt="Doctor 6" class="doctor-img"> Dr. Emily Thomas</td>
+                    <td>Oncologist</td>
+                    <td><button class="appointment-btn" onclick="window.location.href='login.html'">Book Appointment</button></td>
+                </tr>
+                <tr class="doctor-row">
+                    <td><img src="doctor 5.jpeg" alt="Doctor 7" class="doctor-img"> Dr. Ramesh Patel</td>
+                    <td>Gastroenterologist</td>
+                    <td><button class="appointment-btn" onclick="window.location.href='login.html'">Book Appointment</button></td>
+                </tr>
+                <tr class="doctor-row">
+                    <td><img src="doctor 3.jpeg" alt="Doctor 8" class="doctor-img"> Dr. Sarah Johnson</td>
+                    <td>Psychiatrist</td>
+                    <td><button class="appointment-btn" onclick="window.location.href='login.html'">Book Appointment</button></td>
+                </tr>
+                <tr class="doctor-row">
+                    <td><img src="doctor 6.jpeg" alt="Doctor 9" class="doctor-img"> Dr. Mohan Reddy</td>
+                    <td>ENT Specialist</td>
+                    <td><button class="appointment-btn" onclick="window.location.href='login.html'">Book Appointment</button></td>
+                </tr>
+                <tr class="doctor-row">
+                    <td><img src="doctor 4.jpeg" alt="Doctor 10" class="doctor-img"> Dr. Lina Rai</td>
+                    <td>Nephrologist</td>
+                    <td><button class="appointment-btn" onclick="window.location.href='login.html'">Book Appointment</button></td>
+                </tr>
+            </body>
+        </table>
+    </main>
+    <script> function getHospitalFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('hospital');
+        }
+
+       
+        const hospitalName = getHospitalFromUrl();
+        document.getElementById('hospitalName').textContent = hospitalName;
+        document.getElementById('hospitalDisplay').textContent = hospitalName;</script>
+</body>
+</html>

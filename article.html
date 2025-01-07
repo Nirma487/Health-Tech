@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+ <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: pink;
+            color: #333;
+        }
+
+        .header {
+            background-color: purple;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            animation: slideDown 1.5s ease-out;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-family:Lucida Handwriting;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .article-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: palevioletred;
+        }
+
+        .article-content {
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: coral;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .read-more:hover {
+            background-color:chocolate;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+        <h1>Hospital Insights</h1>
+    </div>
+
+    <div class="container">
+        <h2 class="article-title">Enhancing Patient Care Through Innovation</h2>
+        <p class="article-content">
+            Our hospital is at the forefront of medical innovation, constantly striving to enhance patient care through cutting-edge technology and advanced medical practices. Our dedicated team of healthcare professionals is committed to delivering compassionate care and ensuring that each patient receives personalized treatment.
+        </p>
+        <p class="article-content">
+            With a focus on patient safety and comfort, we have implemented state-of-the-art facilities that streamline processes and improve outcomes. From our efficient admission systems to our responsive emergency care services, every aspect of our hospital is designed to provide exceptional care.
+        </p>
+        <a href="https://i.pinimg.com/originals/36/45/39/364539fdedfd831ac25df8958acae97b.jpg" class="read-more">Read More</a>
+    </div>
+</body>
+</html>
